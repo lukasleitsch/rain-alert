@@ -3,6 +3,7 @@
 import RPi.GPIO as GPIO
 import time
 import telegram
+import urllib.request
 import config
 
 bot = telegram.Bot(token=config.token)
@@ -12,7 +13,13 @@ GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(11, GPIO.IN)
 
-input = GPIO.input(11)
+# Wait for internet
+while True:
+    try:
+        urllib.request.urlopen(config.gateway,timeout=1)
+        break
+    except urllib.request.URLError:
+        pass
 
 bot.send_message(chat_id=config.chat_id, text="💤  Warte auf den Regen...")
 
