@@ -1,5 +1,5 @@
 # Rain Alert
-A simple python for detecting the rain with a Raspberry Pi and a rain sensor.
+A simple python script for detecting the rain with a Raspberry Pi and a rain sensor.
 
 ## Setup
 
